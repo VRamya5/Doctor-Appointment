@@ -1,0 +1,200 @@
+/* Remove default margin/padding and make navbar full width */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #6361d4, #8e9cff);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin-left: 700px;
+}
+
+.navbar-links li a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #0f100f;
+  text-shadow: 0 0 8px #6776cd, 0 0 16px #585ad0;
+}
+
+/* Login/Register buttons */
+.navbar-actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Buttons style */
+.login-btn, .register-btn,.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease;
+  color: black;
+}
+
+/* Icons black */
+.login-btn svg, .register-btn svg {
+  color: black;
+  font-size: 20px;
+}
+
+/* Hover / active effects */
+.login-btn:hover, .register-btn:hover,
+.login-btn:active, .register-btn:active {
+  color: white;
+  transform: scale(1.05);
+}
+
+.login-btn:hover svg, .register-btn:hover svg,
+.login-btn:active svg, .register-btn:active svg {
+  color: white;
+}
+
+/* ==========================
+   Responsive Navbar (Mobile)
+========================== */
+.menu-icon {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .navbar-links {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #6361d4, #8e9cff);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .navbar-links.active {
+    left: 0;
+  }
+
+  .navbar-actions {
+    display: none; /* hide in mobile for cleaner look */
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
+/* Hamburger icon (hidden on desktop) */
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* For Mobile */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    margin-right: 180px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #6361d4;
+    position: fixed;
+    top: 60px;             /* just below navbar */
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    text-align: center;
+    gap: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    z-index: 99;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  /* Remove desktop margin */
+  .navbar-links {
+    margin-left: 0 !important;
+  }
+
+  /* Keep login/register visible on mobile */
+  .navbar-actions {
+    display: flex;
+    gap: 15px;
+  }
+
+  .login-btn, .register-btn {
+    padding: 2px;
+  }
+
+  .login-btn svg, .register-btn svg {
+    font-size: 22px; /* slightly larger for touch */
+  }
+} 
